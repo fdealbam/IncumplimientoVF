@@ -349,10 +349,21 @@ TOTTRATAPERSONAS = delitoso['Grand total'].sum()
 pobtot = junto15_21['Totpob1521'].sum()
 TASATRATAPERSONAS = round((TOTTRATAPERSONAS/pobtot)*100000,0)
 
-delCiu = delitoso[delitoso.Entidad == 'México']
-delMex = delitoso[delitoso.Entidad == 'Sonora']
-delChi = delitoso[delitoso.Entidad == 'Tamaulipas']
-delPue = delitoso[delitoso.Entidad == 'Chiapas']
+otrooso = delitoso.copy()
+otrooso.groupby(['Entidad'])['Grand total'].sum().to_csv('0agrup2.csv')
+enorden = pd.read_csv('0agrup2.csv')
+enorden2 = enorden.sort_values('Grand total', ascending=False, ignore_index=True)
+
+edoname1 = enorden2.iloc[0]['Entidad']
+edoname2 = enorden2.iloc[1]['Entidad']
+edoname3 = enorden2.iloc[2]['Entidad']
+edoname4 = enorden2.iloc[3]['Entidad']
+
+
+delCiu = delitoso[delitoso.Entidad == edoname1 ]
+delMex = delitoso[delitoso.Entidad == edoname2 ]
+delChi = delitoso[delitoso.Entidad == edoname3 ]
+delPue = delitoso[delitoso.Entidad == edoname4 ]
 
 
 delCiu2 = delCiu.sort_values('Grand total', ascending=False, ignore_index=True)
@@ -430,9 +441,9 @@ n4edo4 = delPue2.iloc[3]['Municipio']
 n5edo4 = delPue2.iloc[4]['Municipio']
 n6edo4 = delPue2.iloc[5]['Municipio']
 n7edo4 = delPue2.iloc[6]['Municipio']
-n8edo4 = delPue2.iloc[7]['Municipio']
-n9edo4 = delPue2.iloc[8]['Municipio']
-n10edo4 = delPue2.iloc[9]['Municipio']
+#n8edo4 = delPue2.iloc[7]['Municipio']
+#n9edo4 = delPue2.iloc[8]['Municipio']
+#n10edo4 = delPue2.iloc[9]['Municipio']
 v1edo4 = int(delPue2.iloc[0]['Grand total'])
 v2edo4 = int(delPue2.iloc[1]['Grand total'])
 v3edo4 = int(delPue2.iloc[2]['Grand total'])
@@ -440,14 +451,15 @@ v4edo4 = int(delPue2.iloc[3]['Grand total'])
 v5edo4 = int(delPue2.iloc[4]['Grand total'])
 v6edo4 = int(delPue2.iloc[5]['Grand total'])
 v7edo4 = int(delPue2.iloc[6]['Grand total'])
-v8edo4 = int(delPue2.iloc[7]['Grand total'])
-v9edo4 = int(delPue2.iloc[8]['Grand total'])
-v10edo4 =int( delPue2.iloc[9]['Grand total'])
+#v8edo4 = int(delPue2.iloc[7]['Grand total'])
+#v9edo4 = int(delPue2.iloc[8]['Grand total'])
+#v10edo4 =int( delPue2.iloc[9]['Grand total'])
 
-bulletedo1 = ("Las 10 alcaldías con más No asistencia familiar fueron: "+str(n1edo1)  +" ("+ str(v1edo1)+"), "+str(n2edo1) +" ("+ str(v2edo1)+"), "+str(n3edo1) +" ("+ str(v3edo1)+"), "+str(n4edo1) +" ("+ str(v4edo1)+"), "+str(n5edo1) +" ("+ str(v5edo1)+"), "+str(n6edo1) +" ("+ str(v6edo1)+"), "+str(n7edo1) +" ("+ str(v7edo1)+"), "+str(n8edo1) +" ("+ str(v8edo1)+"), "+str(n9edo1) +" ("+ str(v9edo1) +") y "+str(n10edo1)+" ("+ str(v10edo1)+").")
-bulletedo2 = ("Los 10 municipios con más No asistencia familiar fueron: "+str(n1edo2) +" ("+ str(v1edo2)+"), "+str(n2edo2) +" ("+ str(v2edo2)+"), "+str(n3edo2) +" ("+ str(v3edo2)+"), "+str(n4edo2) +" ("+ str(v4edo2)+"), "+str(n5edo2) +" ("+ str(v5edo2)+"), "+str(n6edo2) +" ("+ str(v6edo2)+"), "+str(n7edo2) +" ("+ str(v7edo2)+"), "+str(n8edo2) +" ("+ str(v8edo2)+"), "+str(n9edo2) +" ("+ str(v9edo2)+") y "+str(n10edo2) +" ("+ str(v10edo2)+").")
-bulletedo3 = ("Los 10 municipios con más No asistencia familiar fueron: "+str(n1edo3) +" ("+ str(v1edo3)+"), "+str(n2edo3) +" ("+ str(v2edo3)+"), "+str(n3edo3) +" ("+ str(v3edo3)+"), "+str(n4edo3) +" ("+ str(v4edo3)+"), "+str(n5edo3) +" ("+ str(v5edo3)+"), "+str(n6edo3) +" ("+ str(v6edo3)+"), "+str(n7edo3) +" ("+ str(v7edo3)+"), "+str(n8edo3) +" ("+ str(v8edo3)+"), "+str(n9edo3) +" ("+ str(v9edo3)+") y "+str(n10edo3) +" ("+ str(v10edo3)+").")
-bulletedo4 = ("Los 10 municipios con más No asistencia familiar fueron: "+str(n1edo4) +" ("+ str(v1edo4)+"), "+str(n2edo4) +" ("+ str(v2edo4)+"), "+str(n3edo4) +" ("+ str(v3edo4)+"), "+str(n4edo4) +" ("+ str(v4edo4)+"), "+str(n5edo4) +" ("+ str(v5edo4)+"), "+str(n6edo4) +" ("+ str(v6edo4)+"), "+str(n7edo4) +" ("+ str(v7edo4)+"), "+str(n8edo4) +" ("+ str(v8edo4)+"), "+str(n9edo4) +" ("+ str(v9edo4)+") y "+str(n10edo4) +" ("+ str(v10edo4)+").")
+bulletedo1 = ("Los 10 municipios con más delitos de incumplimiento de obligaciones de asistencia familiar fueron: "+str(n1edo1)  +" ("+ str(v1edo1)+"), "+str(n2edo1) +" ("+ str(v2edo1)+"), "+str(n3edo1) +" ("+ str(v3edo1)+"), "+str(n4edo1) +" ("+ str(v4edo1)+"), "+str(n5edo1) +" ("+ str(v5edo1)+"), "+str(n6edo1) +" ("+ str(v6edo1)+"), "+str(n7edo1) +" ("+ str(v7edo1)+"), "+str(n8edo1) +" ("+ str(v8edo1)+"), "+str(n9edo1) +" ("+ str(v9edo1) +") y "+str(n10edo1)+" ("+ str(v10edo1)+").")
+bulletedo2 = ("Los 10 municipios con más delitos de incumplimiento de obligaciones de asistencia familiar fueron: "+str(n1edo2) +" ("+ str(v1edo2)+"), "+str(n2edo2) +" ("+ str(v2edo2)+"), "+str(n3edo2) +" ("+ str(v3edo2)+"), "+str(n4edo2) +" ("+ str(v4edo2)+"), "+str(n5edo2) +" ("+ str(v5edo2)+"), "+str(n6edo2) +" ("+ str(v6edo2)+"), "+str(n7edo2) +" ("+ str(v7edo2)+"), "+str(n8edo2) +" ("+ str(v8edo2)+"), "+str(n9edo2) +" ("+ str(v9edo2)+") y "+str(n10edo2) +" ("+ str(v10edo2)+").")
+bulletedo3 = ("Los 10 municipios con más delitos de incumplimiento de obligaciones de asistencia familiar fueron: "+str(n1edo3) +" ("+ str(v1edo3)+"), "+str(n2edo3) +" ("+ str(v2edo3)+"), "+str(n3edo3) +" ("+ str(v3edo3)+"), "+str(n4edo3) +" ("+ str(v4edo3)+"), "+str(n5edo3) +" ("+ str(v5edo3)+"), "+str(n6edo3) +" ("+ str(v6edo3)+"), "+str(n7edo3) +" ("+ str(v7edo3)+"), "+str(n8edo3) +" ("+ str(v8edo3)+"), "+str(n9edo3) +" ("+ str(v9edo3)+") y "+str(n10edo3) +" ("+ str(v10edo3)+").")
+bulletedo4 = ("Los 10 municipios con más delitos de incumplimiento de obligaciones de asistencia familiar fueron: "+str(n1edo4) +" ("+ str(v1edo4)+"), "+str(n2edo4) +" ("+ str(v2edo4)+"), "+str(n3edo4) +" ("+ str(v3edo4)+"), "+str(n4edo4) +" ("+ str(v4edo4)+"), "+str(n5edo4) +" ("+ str(v5edo4)+"), "+str(n6edo4) +" ("+ str(v6edo4)+") y "+str(n7edo4) +" ("+ str(v7edo4)+"). ")#+str(n8edo4) +" ("+ str(v8edo4)+"), "+str(n9edo4) +" ("+ str(v9edo4)+") y "+str(n10edo4) +" ("+ str(v10edo4)+").")
+
 
 
 ####################################
@@ -702,8 +714,8 @@ body = html.Div([
     
      dbc.Row(
            [
-               dbc.Col(dbc.Button(([html.P("México", style={"font-size": 30,"color": "black","background-color": "white"}),
-                       dbc.CardImg(src="https://github.com/fdealbam/IncumplimientoVF/blob/main/application/static/mx.png?raw=true",
+               dbc.Col(dbc.Button(([html.P(edoname1, style={"font-size": 30,"color": "black","background-color": "white"}),
+                       dbc.CardImg(src="https://github.com/fdealbam/IncumplimientoVF/blob/main/application/static/Mapa México.png?raw=true",
                   style={'size': 2,}),
                           html.P(bulletedo1,
                      style={'font-size': 14, "font-family":"Arial", "text-align":"justify" }),
@@ -714,8 +726,8 @@ body = html.Div([
                          
                          }, disabled=True)),
                
-               dbc.Col(dbc.Button(([html.P("Sonora", style={"font-size": 30,"color": "black","background-color": "white"}),
-                       dbc.CardImg(src="https://github.com/fdealbam/IncumplimientoVF/blob/main/application/static/sonora.png?raw=true",
+               dbc.Col(dbc.Button(([html.P(edoname2, style={"font-size": 30,"color": "black","background-color": "white"}),
+                       dbc.CardImg(src="https://github.com/fdealbam/IncumplimientoVF/blob/main/application/static/Mapa Sonora.png?raw=true",
                                     style={'size': 2,}),
                        html.P(bulletedo2,
                               style={'font-size': 14, "font-family":"Arial", "text-align":"justify" }),
@@ -733,8 +745,8 @@ body = html.Div([
     html.Br(),
     
                 dbc.Row([
-          dbc.Col(dbc.Button(([html.P("Tamaulipas", style={"font-size": 30,"color": "black","background-color": "white"}),
-                       dbc.CardImg(src="https://github.com/fdealbam/IncumplimientoVF/blob/main/application/static/tama.png?raw=true"),
+          dbc.Col(dbc.Button(([html.P(edoname3, style={"font-size": 30,"color": "black","background-color": "white"}),
+                       dbc.CardImg(src="https://github.com/fdealbam/IncumplimientoVF/blob/main/application/static/Mapa Tamaulipas.png?raw=true"),
     
                        html.P(bulletedo3,
                            style={'font-size': 14, "font-family":"Arial", "text-align":"justify" }),
@@ -745,8 +757,8 @@ body = html.Div([
                          
                          }, disabled=True)),
                        
-               dbc.Col(dbc.Button(([html.P("Chiapas", style={"font-size": 30,"color": "black","background-color": "white"}),
-                       dbc.CardImg(src="https://github.com/fdealbam/IncumplimientoVF/blob/main/application/static/chch.png?raw=true"),
+               dbc.Col(dbc.Button(([html.P(edoname4, style={"font-size": 30,"color": "black","background-color": "white"}),
+                       dbc.CardImg(src="https://github.com/fdealbam/IncumplimientoVF/blob/main/application/static/Mapa Chihuahua.png?raw=true"),
                      html.Br(),
                                      html.Br(),
                                      html.Br(),
